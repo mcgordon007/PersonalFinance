@@ -1,0 +1,20 @@
+---
+import { cn } from '@/utils'
+
+interface Props {
+  type?: 'info' | 'warning' | 'danger' | 'success'
+}
+
+const { type = 'info' }: Props = Astro.props
+---
+
+<aside
+  class={cn(
+    'font-semibold rounded-xl border border-grayLight shadow dark:border-grayDeep px-5',
+    type && type !== 'info'
+      ? `bg-200-${type}`
+      : 'dark:bg-gray-900',
+  )}
+>
+  <slot />
+</aside>

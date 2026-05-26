@@ -1,0 +1,53 @@
+---
+// Google AdSense Component
+// Usage: Add this component to your BaseLayout or specific pages
+// Replace the publisherId with your actual AdSense Publisher ID
+
+export interface Props {
+  // Your AdSense Publisher ID (ca-pub-XXXXXXXXXXXXXXXX)
+  publisherId?: string
+  // Ad slot ID (optional, for specific ad units)
+  adSlot?: string
+  // Ad format
+  format?: 'auto' | 'horizontal' | 'vertical' | 'rectangle'
+}
+
+const {
+  publisherId = '', // Will be filled when you get your AdSense account
+  adSlot,
+  format = 'auto',
+} = Astro.props
+---
+
+{publisherId && (
+  <>
+    <script
+      async
+      src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${publisherId}`}
+      crossorigin="anonymous"
+    />
+    {adSlot && (
+      <ins
+        class="adsbygoogle"
+        style="display:block"
+        data-ad-client={publisherId}
+        data-ad-slot={adSlot}
+        data-ad-format={format}
+        data-full-width-responsive="true"
+      />
+    )}
+  </>
+)}
+
+<!-- Placeholder when no AdSense configured -->
+{!publisherId && (
+  <div class="adsense-placeholder" style="display: none;">
+    <!-- AdSense will appear here once configured -->
+  </div>
+)}
+
+{publisherId && adSlot && (
+  <script is:inline>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+)}

@@ -1,0 +1,188 @@
+---
+export interface Props {
+  title: string
+  contents: { label: string; link: string }[]
+  type?: 'outline' | 'solid'
+}
+
+const { title, contents, type = 'outline' } = Astro.props
+---
+
+<div class="modal-wrapper">
+  <button
+    class={`modal-trigger ${type === 'outline' ? 'outline' : 'solid'}`}
+    aria-label={title}
+  >
+    <slot />
+  </button>
+
+  <div class="modal-overlay" aria-hidden="true"></div>
+
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>{title}</h3>
+      <button class="modal-close" aria-label="Close modal">×</button>
+    </div>
+    <nav class="modal-nav">
+      {contents.map((item) => (
+        <a href={item.link} class="modal-link">
+          {item.label}
+        </a>
+      ))}
+    </nav>
+  </div>
+</div>
+
+<style>
+  .modal-wrapper {
+    position: relative;
+  }
+
+  .modal-trigger {
+    padding: 0.5rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal-trigger.outline {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.375rem;
+  }
+
+  .modal-trigger.solid {
+    background: #3b82f6;
+    color: white;
+    border-radius: 0.375rem;
+  }
+
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+    z-index: 100;
+  }
+
+  .modal-wrapper.open .modal-overlay {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .modal-content {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    background: white;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    min-width: 280px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
+    z-index: 101;
+  }
+
+  :global(.dark) .modal-content {
+    background: #1f2937;
+  }
+
+  .modal-wrapper.open .modal-content {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .modal-header h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  .modal-close {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.25rem;
+    line-height: 1;
+    color: #6b7280;
+  }
+
+  .modal-close:hover {
+    color: #111827;
+  }
+
+  :global(.dark) .modal-close:hover {
+    color: #f3f4f6;
+  }
+
+  .modal-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .modal-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    border-radius: 0.375rem;
+    text-decoration: none;
+    color: #374151;
+    transition: background 0.2s;
+  }
+
+  .modal-link:hover {
+    background: #f3f4f6;
+  }
+
+  :global(.dark) .modal-link {
+    color: #e5e7eb;
+  }
+
+  :global(.dark) .modal-link:hover {
+    background: #374151;
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.modal-wrapper').forEach((wrapper) => {
+    const trigger = wrapper.querySelector('.modal-trigger') as HTMLButtonElement
+    const overlay = wrapper.querySelector('.modal-overlay')
+    const closeBtn = wrapper.querySelector('.modal-close')
+
+    function openModal() {
+      wrapper.classList.add('open')
+      document.body.style.overflow = 'hidden'
+    }
+
+    function closeModal() {
+      wrapper.classList.remove('open')
+      document.body.style.overflow = ''
+    }
+
+    trigger?.addEventListener('click', openModal)
+    overlay?.addEventListener('click', closeModal)
+    closeBtn?.addEventListener('click', closeModal)
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && wrapper.classList.contains('open')) {
+        closeModal()
+      }
+    })
+  })
+</script>

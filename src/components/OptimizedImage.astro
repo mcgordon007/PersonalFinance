@@ -1,0 +1,85 @@
+---
+interface Props {
+  src: string
+  alt: string
+  class?: string
+  loading?: 'eager' | 'lazy'
+  decoding?: 'async' | 'sync' | 'auto'
+  width?: number
+  height?: number
+}
+
+const {
+  src,
+  alt,
+  class: className = '',
+  loading = 'lazy',
+  decoding = 'async',
+  width,
+  height,
+} = Astro.props
+
+// Generate srcset for responsive images
+const generateSrcSet = (src: string) => {
+  if (src.startsWith('http')) return null
+  
+  // For local images, we could generate multiple sizes
+  // For now, return null to use original image
+  return null
+}
+
+const srcSet = generateSrcSet(src)
+---
+
+<img
+  src={src}
+  alt={alt}
+  class={className}
+  loading={loading}
+  decoding={decoding}
+  width={width}
+  height={height}
+  srcset={srcSet || undefined}
+  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+/>
+<div class="hidden h-full min-w-full bg-gradient-to-br from-indigo-500 to-purple-600 items-center justify-center">
+  <span class="text-white text-4xl font-bold opacity-30">AI</span>
+</div>
+
+<script>
+  // Intersection Observer for advanced lazy loading
+  if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target as HTMLImageElement
+          img.classList.add('is-visible')
+          observer.unobserve(img)
+        }
+      })
+    }, {
+      rootMargin: '50px 0px',
+      threshold: 0.01
+    })
+
+    document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+      imageObserver.observe(img)
+    })
+  }
+</script>
+
+<style>
+  img[loading="lazy"] {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  img[loading="lazy"].is-visible,
+  img[loading="eager"] {
+    opacity: 1;
+  }
+  
+  img[loading="lazy"]:not(.is-visible) {
+    opacity: 0;
+  }
+</style>

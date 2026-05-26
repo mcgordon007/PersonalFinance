@@ -1,0 +1,17 @@
+---
+import BaseLayout from '@/layouts/BaseLayout'
+import TitlePage from '@/components/TitlePage'
+import TagCloud from '@/components/TagCloud'
+import { getTags } from '@/utils'
+import { getLangFromUrl, useTranslations } from '@/i18n/utils'
+
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
+const tags = await getTags()
+---
+
+<BaseLayout title="Tags">
+  <TitlePage title={t('tags.title')} />
+  <TagCloud tags={tags} />
+</BaseLayout>

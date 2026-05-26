@@ -1,0 +1,31 @@
+# Easy Personal Finance
+> A go-to blog for anyone who wants to handle money better without complicated jargon, confusing formulas, or risky financial tricks. Beginner-friendly personal finance content covering budgeting, saving, investing, debt management, and more.
+
+## About
+- About: https://51685188.xyz/about: Learn more about Easy Personal Finance and our mission to make personal finance accessible to everyone.
+
+## Core Content
+
+### Budgeting & Money Management
+- The 50/30/20 Budget Rule: https://51685188.xyz/post/2026/2026-05-25/50-30-20-budget-rule/: Learn the simple 50/30/20 budgeting method that helps you allocate your income wisely without complicated spreadsheets.
+- How to Save $1,000 a Month: https://51685188.xyz/post/2026/2026-05-25/how-to-save-1000-a-month/: A practical, step-by-step guide to saving $1,000 per month without extreme frugality.
+- Why Your Savings Account is Costing You Money: https://51685188.xyz/post/2026/2026-05-25/savings-account-losing-money/: Discover why keeping all your money in a traditional savings account might be silently eroding your wealth.
+- 6 Costly Money Mistakes Most Americans Make: https://51685188.xyz/post/2026/2026-05-25/costly-money-mistakes/: Learn about the six most common and expensive financial mistakes.
+
+### Investing
+- ETF Investing for Beginners: https://51685188.xyz/post/2026/2026-05-25/etf-investing-for-beginners/: Learn why ETFs are the perfect investment vehicle for beginners and how to start building wealth with as little as $100.
+- Compound Interest: The Most Powerful Force in Finance: https://51685188.xyz/post/2026/2026-05-25/compound-interest-powerful-force/: Discover why Einstein called compound interest the eighth wonder of the world.
+- Roth IRA vs Traditional IRA: https://51685188.xyz/post/2026/2026-05-25/roth-vs-traditional-ira/: The complete guide to choosing between Roth and Traditional IRA.
+
+### Retirement & Employer Benefits
+- 401(k): Your Employer Is Offering Free Money: https://51685188.xyz/post/2026/2026-05-25/401k-employer-match-free-money/: Learn why employer 401(k) matching is the easiest wealth-building opportunity you have.
+
+### Credit & Debt
+- Credit Score Basics: https://51685188.xyz/post/2026/2026-05-25/credit-score-basics/: Everything you need to understand about credit scores and how to improve yours.
+
+### Income & Career
+- Side Hustles That Actually Work in 2026: https://51685188.xyz/post/2026/2026-05-25/side-hustles-that-work-2026/: Proven side hustles that can realistically earn you $500-$2000+ per month.
+- How to Negotiate Your Salary: https://51685188.xyz/post/2026/2026-05-25/negotiate-salary/: A practical guide to salary negotiation that could be worth hundreds of thousands of dollars.
+
+### Behavioral Finance
+- The Psychology of Money: https://51685188.xyz/post/2026/2026-05-25/psychology-of-money/: Discover the hidden mental biases that sabotage your financial decisions.

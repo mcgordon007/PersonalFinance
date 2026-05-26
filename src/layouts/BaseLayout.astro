@@ -1,0 +1,56 @@
+---
+import '@/styles'
+import BaseHead from '@/components/BaseHead'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+import ProviderTheme from '@/components/ProviderTheme'
+import ProviderAnimations from '@/components/ProviderAnimations'
+import TwSizeIndicator from '@/components/test/TwSizeIndicator'
+import AdSense from '@/components/AdSense'
+import CookieConsent from '@/components/CookieConsent'
+import GoogleAnalytics from '@/components/GoogleAnalytics'
+import { getLangFromUrl } from '@/i18n/utils'
+import type { Props } from '@/components/BaseHead'
+
+const lang = getLangFromUrl(Astro.url)
+const { title, description, ogImage, articleDate }: Props = Astro.props
+
+// Google AdSense Publisher ID
+const ADSENSE_ID = 'ca-pub-2485720330662082'
+
+// Google Analytics Measurement ID
+const GA_ID = 'G-2TKL2G2V9Z'
+---
+
+<html lang={lang} class="scroll-smooth">
+  <head>
+    <BaseHead
+      title={title}
+      description={description}
+      ogImage={ogImage}
+      articleDate={articleDate}
+    />
+    <GoogleAnalytics measurementId={GA_ID} />
+    <AdSense publisherId={ADSENSE_ID} />
+    <script src="https://quge5.com/88/tag.min.js" data-zone="243012" async data-cfasync="false"></script>
+    <ProviderTheme />
+    <ProviderAnimations />
+  </head>
+
+  <body class="dark:bg-[#0a0910] dark:text-white">
+    <main
+      class="px-4 sm:mx-auto sm:max-w-2xl antialiased md:max-w-6xl grid gap-12 mt-4 overflow-hidden md:overflow-visible"
+    >
+      <Header />
+      <slot />
+      <Footer />
+    </main>
+    <TwSizeIndicator />
+    <CookieConsent />
+    <style>
+      body {
+        margin-left: calc(100vw - 100%); /* prevent layout shift */
+      }
+    </style>
+  </body>
+</html>

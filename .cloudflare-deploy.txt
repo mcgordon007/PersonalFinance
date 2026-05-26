@@ -1,0 +1,5 @@
+# Cloudflare Pages Deployment Configuration
+# Build command: pnpm build
+# Build output directory: dist
+# Node.js version: 22 (or latest LTS)
+# Environment variables: NODE_VERSION=22

@@ -1,0 +1,16 @@
+---
+const today = new Date()
+---
+
+<footer
+  class="flex flex-col justify-center items-center w-full px-16 py-8 border-t-[1px] gap-4"
+>
+  <div class="flex flex-wrap justify-center gap-6 text-sm">
+    <a href="/privacy" class="hover:text-blue-500 transition-colors">Privacy Policy</a>
+    <a href="/terms" class="hover:text-blue-500 transition-colors">Terms of Service</a>
+    <a href="/disclaimer" class="hover:text-blue-500 transition-colors">Disclaimer</a>
+  </div>
+  <p class="text-sm text-gray-500">
+    &copy; {today.getFullYear()} Easy Personal Finance. All rights reserved.
+  </p>
+</footer>

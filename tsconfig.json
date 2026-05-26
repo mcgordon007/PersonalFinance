@@ -1,0 +1,19 @@
+{
+  "extends": "astro/tsconfigs/base",
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["node_modules", "**/node_modules/*", ".vscode", "dist"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "verbatimModuleSyntax": true,
+    "paths": {
+      "@/components/*": ["src/components/*.astro"],
+      "@/layouts/*": ["src/layouts/*.astro"],
+      "@/utils": ["src/utils/index.ts"],
+      "@/data/*": ["src/data/*"],
+      "@/site-config": ["src/site/site.config.ts"],
+      "@/i18n/*": ["src/i18n/*.ts"],
+      "@/assets/*": ["src/assets/*"],
+      "@/styles": ["src/styles/global.css"]
+    }
+  }
+}

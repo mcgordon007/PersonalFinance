@@ -1,0 +1,41 @@
+---
+import HeaderLink from '@/components/HeaderLink'
+import SearchPage from '@/components/SearchPage'
+import BurgerIcon from '@/components/icons/Burger'
+import ToggleTheme from '@/components/ToggleTheme'
+import Modal from '@/components/Modal'
+import { useTranslations } from '@/i18n/utils'
+
+const t = useTranslations('en')
+---
+
+<header class="flex justify-between items-center h-12 font-semibold">
+  <a class="text-xl transition-all hover:font-bold" href="/">Easy Personal Finance</a>
+
+  <section class="z-50">
+    <nav class="flex justify-between gap-3">
+      <section class="hidden md:flex gap-3 mr-3">
+        <HeaderLink href="/">{t('nav.home')}</HeaderLink>
+        <HeaderLink href="/tags">{t('nav.tags')}</HeaderLink>
+        <HeaderLink href="/about">{t('nav.about')}</HeaderLink>
+      </section>
+
+      <SearchPage title="Search" />
+      <ToggleTheme aria-label="Switch Blog Theme" />
+
+      <nav class="md:hidden">
+        <Modal
+          title={t('nav.navigation')}
+          contents={[
+            { label: t('nav.home'), link: '/' },
+            { label: t('nav.tags'), link: '/tags' },
+            { label: t('nav.about'), link: '/about' },
+          ]}
+          type="outline"
+        >
+          <BurgerIcon aria-label="Open Navigation on Mobile Devices" />
+        </Modal>
+      </nav>
+    </nav>
+  </section>
+</header>

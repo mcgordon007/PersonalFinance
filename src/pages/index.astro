@@ -1,0 +1,23 @@
+---
+import ListPosts from '@/components/ListPosts'
+import TitlePage from '@/components/TitlePage'
+import BaseLayout from '@/layouts/BaseLayout'
+import { useTranslations } from '@/i18n/utils'
+import { getPosts } from '@/utils'
+
+const posts = await getPosts()
+
+const t = useTranslations('en')
+---
+
+<BaseLayout title="Home">
+  <TitlePage title={t('index.title')} />
+  <hr />
+
+  <section>
+    <h2 class="text-lg font-medium tracking-wide text-end">
+      {t('index.latestPosts')}
+    </h2>
+    <ListPosts FirstBig={true} posts={posts} />
+  </section>
+</BaseLayout>
