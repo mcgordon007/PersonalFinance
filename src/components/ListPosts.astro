@@ -9,6 +9,18 @@ type Props = {
 }
 
 const { posts, FirstBig = false }: Props = Astro.props
+
+// Render all posts and collect results
+const renderedPosts = await Promise.all(
+  posts.map(async (post) => {
+    const { remarkPluginFrontmatter } = await render(post)
+    return {
+      id: post.id,
+      data: post.data,
+      readTime: remarkPluginFrontmatter.minutesRead,
+    }
+  })
+)
 ---
 
 <section
@@ -18,16 +30,12 @@ const { posts, FirstBig = false }: Props = Astro.props
   )}
 >
   {
-    posts.map(async (post) => {
-      const { remarkPluginFrontmatter } = await render(post)
-
-      return (
-        <PostCard
-          id={post.id}
-          data={post.data}
-          readTime={remarkPluginFrontmatter.minutesRead}
-        />
-      )
-    })
+    renderedPosts.map((post) => (
+      <PostCard
+        id={post.id}
+        data={post.data}
+        readTime={post.readTime}
+      />
+    ))
   }
 </section>

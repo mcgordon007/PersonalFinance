@@ -29,10 +29,12 @@ const t = useTranslations('en')
 // Resolve heroImage: handle both relative paths (images/xxx) and absolute paths (/posts/...)
 // Strip index.mdx from id to get the correct path
 const slug = id.replace(/\/index\.mdx$/, '')
-const heroSrc = heroImage 
-  ? heroImage.startsWith('/') 
-    ? heroImage 
-    : `/posts/${slug}/${heroImage}`
+// Clean up heroImage path by removing ./ prefix if present
+const cleanHeroImage = heroImage?.replace(/^\.\//, '')
+const heroSrc = cleanHeroImage 
+  ? cleanHeroImage.startsWith('/') 
+    ? cleanHeroImage 
+    : `/posts/${slug}/${cleanHeroImage}`
   : ''
 ---
 
