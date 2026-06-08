@@ -71,12 +71,17 @@ sortedLetters.forEach(letter => {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 8px;
+    gap: 6px;
     margin-bottom: 2.5rem;
     padding: 1rem;
-    background: rgba(31, 41, 55, 0.5);
+    background: rgba(229, 231, 235, 0.6);
     border-radius: 12px;
-    border: 1px solid rgba(55, 65, 81, 0.5);
+    border: 1px solid rgba(209, 213, 219, 0.5);
+  }
+
+  :global(.dark) .alphabet-nav {
+    background: rgba(31, 41, 55, 0.5);
+    border-color: rgba(55, 65, 81, 0.5);
   }
 
   .alphabet-link {
@@ -86,18 +91,35 @@ sortedLetters.forEach(letter => {
     width: 36px;
     height: 36px;
     border-radius: 8px;
-    background: rgba(55, 65, 81, 0.6);
-    color: #d1d5db;
+    background: #ffffff;
+    color: #374151;
     text-decoration: none;
     font-weight: 600;
     font-size: 0.95rem;
     transition: all 0.2s ease;
+    border: 1px solid #d1d5db;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+
+  :global(.dark) .alphabet-link {
+    background: rgba(55, 65, 81, 0.8);
+    color: #d1d5db;
+    border-color: rgba(75, 85, 99, 0.6);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
   }
 
   .alphabet-link:hover {
-    background: #60a5fa;
+    background: #2563eb;
     color: #fff;
+    border-color: #2563eb;
     transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  }
+
+  :global(.dark) .alphabet-link:hover {
+    background: #3b82f6;
+    border-color: #3b82f6;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
   }
 
   /* Tag Groups */
@@ -114,10 +136,15 @@ sortedLetters.forEach(letter => {
   .group-letter {
     font-size: 1.75rem;
     font-weight: 700;
-    color: #f3f4f6;
+    color: #1f2937;
     margin-bottom: 1rem;
     padding-bottom: 0.5rem;
-    border-bottom: 2px solid rgba(96, 165, 250, 0.3);
+    border-bottom: 2px solid #e5e7eb;
+  }
+
+  :global(.dark) .group-letter {
+    color: #f3f4f6;
+    border-bottom-color: rgba(96, 165, 250, 0.3);
   }
 
   .tag-list {
@@ -131,18 +158,33 @@ sortedLetters.forEach(letter => {
     align-items: center;
     justify-content: space-between;
     padding: 0.75rem 1rem;
-    border-radius: 8px;
-    background: rgba(31, 41, 55, 0.4);
-    border: 1px solid rgba(55, 65, 81, 0.3);
+    border-radius: 10px;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
     text-decoration: none;
-    color: #e5e7eb;
+    color: #374151;
     transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+
+  :global(.dark) .tag-item {
+    background: rgba(31, 41, 55, 0.6);
+    border-color: rgba(55, 65, 81, 0.4);
+    color: #e5e7eb;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
   }
 
   .tag-item:hover {
-    background: rgba(55, 65, 81, 0.6);
-    border-color: rgba(96, 165, 250, 0.4);
+    background: #f8fafc;
+    border-color: #3b82f6;
     transform: translateX(4px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.12);
+  }
+
+  :global(.dark) .tag-item:hover {
+    background: rgba(55, 65, 81, 0.8);
+    border-color: #3b82f6;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
   }
 
   .tag-name {
@@ -152,13 +194,17 @@ sortedLetters.forEach(letter => {
 
   .tag-count {
     font-size: 0.85rem;
-    color: #9ca3af;
+    color: #6b7280;
     font-weight: 400;
+  }
+
+  :global(.dark) .tag-count {
+    color: #9ca3af;
   }
 
   @media (max-width: 640px) {
     .alphabet-nav {
-      gap: 6px;
+      gap: 5px;
       padding: 0.75rem;
     }
 
